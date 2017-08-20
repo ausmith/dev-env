@@ -23,7 +23,7 @@ RUN echo "deb http://cloudfront.debian.net/debian sid main contrib" >> /etc/apt/
                         jq unzip xloadimage apt-file man dnsutils bash-completion
 
 # Install misc tools
-RUN apt-get install -qy silversearcher-ag
+RUN apt-get install -qy silversearcher-ag packer
 
 # Install blackbox
 RUN set -ex && \
