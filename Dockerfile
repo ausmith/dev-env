@@ -37,7 +37,7 @@ RUN set -ex && \
 
 # Install terraform
 RUN set -ex && \
-    curl -s -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.10.2/terraform_0.10.2_linux_amd64.zip && \
+    curl -s -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.11.2/terraform_0.11.2_linux_amd64.zip && \
     ls -lh / && \
     cd /usr/local/bin && \
     unzip /tmp/terraform.zip && \
@@ -45,10 +45,12 @@ RUN set -ex && \
     rm /tmp/terraform.zip
 
 # Install rbenv
-RUN apt-get install -qy rbenv libssl-dev libreadline-dev zlib1g-dev
+RUN apt-get update -qq && \
+    apt-get install -qy rbenv libssl-dev libreadline-dev zlib1g-dev
 
 # Install python
-RUN apt-get install -qy python python-dev python-pip python virtualenv && \
+RUN apt-get update -qq && \
+    apt-get install -qy python python-dev python-pip python virtualenv && \
     pip install --upgrade pip
 
 # Install python requirements
